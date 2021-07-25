@@ -21,7 +21,7 @@ class LoginPage extends StatelessWidget {
           padding: EdgeInsets.symmetric(horizontal: 20),
           child: Form(
             key: _formKey,
-            autovalidateMode: AutovalidateMode.onUserInteraction,
+            autovalidateMode: AutovalidateMode.disabled,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -42,16 +42,17 @@ class LoginPage extends StatelessWidget {
                     hintText: 'email',
                   ),
                   validator: (value) {
-                    return value!.isEmpty ? "email can bot be empty" : null;
+                    return value!.isEmpty ? "email can not be empty" : null;
                   },
                 ),
                 TextFormField(
+                  obscureText: true,
                   controller: _passwordController,
                   decoration: InputDecoration(
                     hintText: 'password',
                   ),
                   validator: (value) {
-                    return value!.isEmpty ? "password can bot be empty" : null;
+                    return value!.isEmpty ? "password can not be empty" : null;
                   },
                 ),
                 const SizedBox(height: 40),

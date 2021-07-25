@@ -11,8 +11,13 @@ class AuthService {
     return AuthApiResponseModel.fromMap(response.data);
   }
 
-  Future<AuthApiResponseModel> registerWithEmailAndPasswordAndGetToken({required String email, required String password}) async {
-    var response = await dio.post(registerUrl, data: {"email": email, "password": password});
+  Future<AuthApiResponseModel> registerWithEmailAndPasswordAndGetToken({required String email, required String password, required String name, required String phone}) async {
+    var response = await dio.post(registerUrl, data: {
+      "email": email,
+      "password": password,
+      "name": name,
+      "phone": int.parse(phone),
+    });
     // print("Status Code : ${response.data}");
     return AuthApiResponseModel.fromMap(response.data);
   }
