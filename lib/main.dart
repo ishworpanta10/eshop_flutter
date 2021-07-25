@@ -1,6 +1,7 @@
 import 'package:bot_toast/bot_toast.dart';
+import 'package:e_shop_flutter_api/model/user_model.dart';
 import 'package:e_shop_flutter_api/screen/homepage.dart';
-import 'package:e_shop_flutter_api/screen/register.dart';
+import 'package:e_shop_flutter_api/screen/login.dart';
 import 'package:e_shop_flutter_api/utils/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -24,7 +25,15 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: Constants.prefs?.getBool(Constants.loginSP) == true ? HomePage() : RegisterPage(),
+      home: Constants.prefs?.getBool(Constants.loginSP) == true
+          ? HomePage(
+              userModel: UserModel(
+                name: "Ishwor Panta IP",
+                email: "ishworpanta10@gmail.com",
+                phone: 985435667,
+              ),
+            )
+          : LoginPage(),
     );
   }
 }

@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:e_shop_flutter_api/model/auth/login_api_response_model.dart';
+import 'package:e_shop_flutter_api/model/auth/auth_api_response_model.dart';
 
 class AuthService {
   final loginUrl = "https://ishwor-node-eshop-test-api.herokuapp.com/api/v1/users/login";

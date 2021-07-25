@@ -1,5 +1,5 @@
 import 'package:bot_toast/bot_toast.dart';
-import 'package:e_shop_flutter_api/model/auth/login_api_response_model.dart';
+import 'package:e_shop_flutter_api/model/auth/auth_api_response_model.dart';
 import 'package:e_shop_flutter_api/screen/login.dart';
 import 'package:e_shop_flutter_api/services/auth_service.dart';
 import 'package:flutter/material.dart';
@@ -120,12 +120,7 @@ class RegisterPage extends StatelessWidget {
                 Center(
                   child: TextButton(
                     onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (_) => LoginPage(),
-                        ),
-                      );
+                      Navigator.pop(context);
                     },
                     child: Text("Already have account ? Login"),
                   ),

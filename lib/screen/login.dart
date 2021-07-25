@@ -1,5 +1,7 @@
 import 'package:bot_toast/bot_toast.dart';
-import 'package:e_shop_flutter_api/model/auth/login_api_response_model.dart';
+import 'package:e_shop_flutter_api/model/auth/auth_api_response_model.dart';
+import 'package:e_shop_flutter_api/model/user_model.dart';
+import 'package:e_shop_flutter_api/screen/register.dart';
 import 'package:e_shop_flutter_api/services/auth_service.dart';
 import 'package:e_shop_flutter_api/utils/constants.dart';
 import 'package:flutter/material.dart';
@@ -69,7 +71,12 @@ class LoginPage extends StatelessWidget {
                 Center(
                   child: TextButton(
                     onPressed: () {
-                      Navigator.pop(context);
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (_) => RegisterPage(),
+                        ),
+                      );
                     },
                     child: Text("Don't have account ? Register"),
                   ),
@@ -97,15 +104,21 @@ class LoginPage extends StatelessWidget {
       if (token != null) {
         Constants.prefs?.setString(Constants.tokenSP, token);
         Constants.prefs?.setBool(Constants.loginSP, true);
-        BotToast.showText(text: "Login Success ${data.message}");
+        BotToast.showText(text: "Success ${data.message}");
+        final UserModel userModel = UserModel(
+          name: data.userModel!.name,
+          email: data.userModel!.email,
+          phone: data.userModel!.phone,
+          image: data.userModel!.image,
+        );
         Navigator.pushReplacement(
           context,
           MaterialPageRoute(
-            builder: (_) => HomePage(),
+            builder: (_) => HomePage(userModel: userModel),
           ),
         );
       } else {
-        BotToast.showText(text: "Login Failed ${data.message}");
+        BotToast.showText(text: "Failed : ${data.message}");
       }
       BotToast.closeAllLoading();
     }
