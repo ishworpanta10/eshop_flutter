@@ -1,3 +1,4 @@
+import 'package:e_shop_flutter_api/services/services.dart';
 import 'package:flutter/material.dart';
 
 class CustomDrawer extends StatelessWidget {
@@ -23,8 +24,11 @@ class CustomDrawer extends StatelessWidget {
             ),
           ),
           ListTile(
-            title: Text("Oerders"),
-          )
+            title: Text("Orders"),
+            onTap: () async {
+              await ApiService().getAllOrdersList();
+            },
+          ),
         ],
       ),
     );

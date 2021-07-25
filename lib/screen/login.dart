@@ -106,6 +106,7 @@ class LoginPage extends StatelessWidget {
         Constants.prefs?.setBool(Constants.loginSP, true);
         BotToast.showText(text: "Success ${data.message}");
         final UserModel userModel = UserModel(
+          id: data.userModel!.id,
           name: data.userModel!.name,
           email: data.userModel!.email,
           phone: data.userModel!.phone,

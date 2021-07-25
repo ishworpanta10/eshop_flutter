@@ -1,4 +1,5 @@
 class UserModel {
+  final String id;
   final String name;
   final String email;
   final int phone;
@@ -11,6 +12,7 @@ class UserModel {
   final bool? isAdmin;
 
   UserModel({
+    required this.id,
     required this.name,
     required this.email,
     required this.phone,
@@ -25,6 +27,7 @@ class UserModel {
 
   factory UserModel.fromMap(Map<String, dynamic> json) {
     return UserModel(
+      id: json["id"],
       name: json["name"],
       email: json["email"],
       phone: json["phone"],

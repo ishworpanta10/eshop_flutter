@@ -12,6 +12,8 @@ class HomePage extends StatelessWidget {
   const HomePage({Key? key, required this.userModel}) : super(key: key);
   @override
   Widget build(BuildContext context) {
+    // final token = Constants.prefs!.getString(Constants.tokenSP);
+    // print(token);
     return Scaffold(
       drawer: CustomDrawer(),
       appBar: AppBar(
