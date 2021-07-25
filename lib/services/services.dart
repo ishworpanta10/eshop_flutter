@@ -42,6 +42,8 @@ class ApiService {
         final data = response.data["orderList"] as List;
         orderList = data.map((orderListModel) => OrderListModel.fromMap(orderListModel)).toList();
         print("Order Length :  ${orderList.length}");
+        print("Order Length :  ${orderList[0].userId}");
+
         // return orderList;
       } else {
         print("${response.statusCode} : ${response.statusMessage}");

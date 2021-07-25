@@ -1,8 +1,10 @@
+import 'package:e_shop_flutter_api/model/user_model.dart';
 import 'package:e_shop_flutter_api/services/services.dart';
 import 'package:flutter/material.dart';
 
 class CustomDrawer extends StatelessWidget {
-  const CustomDrawer({Key? key}) : super(key: key);
+  final UserModel userModel;
+  const CustomDrawer({Key? key, required this.userModel}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -11,8 +13,8 @@ class CustomDrawer extends StatelessWidget {
         children: [
           UserAccountsDrawerHeader(
             // decoration: BoxDecoration(),
-            accountEmail: Text("ishworpanta10@gmail.com"),
-            accountName: Text("Ishwor Panta"),
+            accountEmail: Text(userModel.email),
+            accountName: Text(userModel.name),
             currentAccountPicture: CircleAvatar(
               backgroundColor: Colors.white,
               child: CircleAvatar(
@@ -27,6 +29,8 @@ class CustomDrawer extends StatelessWidget {
             title: Text("Orders"),
             onTap: () async {
               await ApiService().getAllOrdersList();
+              // final userModel = await AuthService().getUserDetails();
+              // print(userModel.name);
             },
           ),
         ],

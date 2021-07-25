@@ -1,6 +1,5 @@
 import 'package:bot_toast/bot_toast.dart';
 import 'package:e_shop_flutter_api/model/auth/auth_api_response_model.dart';
-import 'package:e_shop_flutter_api/model/user_model.dart';
 import 'package:e_shop_flutter_api/screen/register.dart';
 import 'package:e_shop_flutter_api/services/auth_service.dart';
 import 'package:e_shop_flutter_api/utils/constants.dart';
@@ -101,21 +100,24 @@ class LoginPage extends StatelessWidget {
       );
       print("Token : ${data.token}");
       final token = data.token;
+
       if (token != null) {
+        final uid = data.userModel!.id;
+        Constants.prefs?.setString(Constants.userIdSP, uid);
         Constants.prefs?.setString(Constants.tokenSP, token);
         Constants.prefs?.setBool(Constants.loginSP, true);
         BotToast.showText(text: "Success ${data.message}");
-        final UserModel userModel = UserModel(
-          id: data.userModel!.id,
-          name: data.userModel!.name,
-          email: data.userModel!.email,
-          phone: data.userModel!.phone,
-          image: data.userModel!.image,
-        );
+        // final UserModel userModel = UserModel(
+        //   id: data.userModel!.id,
+        //   name: data.userModel!.name,
+        //   email: data.userModel!.email,
+        //   phone: data.userModel!.phone,
+        //   image: data.userModel!.image,
+        // );
         Navigator.pushReplacement(
           context,
           MaterialPageRoute(
-            builder: (_) => HomePage(userModel: userModel),
+            builder: (_) => HomePage(),
           ),
         );
       } else {
